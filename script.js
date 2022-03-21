@@ -2,20 +2,42 @@
 let numRows = 0;
 let numCols = 0;
 let colorSelected; 
+let grid = document.getElementById("grid");
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    numRows++;
+    if (numCols == 0) numCols++; 
+    let row = document.createElement("tr");
+    grid.appendChild(row); 
+    for (let i = 0; i < numCols; i++) { // Will make new row contain same # of cells as prev rows 
+        let cell = document.createElement("td");
+        row.appendChild(cell);
+    }
 }
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    numCols++;
+    if (numRows == 0) { // Condition has same functionality as calling addR with numCols == 0
+        numRows++;
+        let row = document.createElement("tr");
+        grid.appendChild(row);
+        let cell = document.createElement("td");
+        row.appendChild(cell);
+    } else { // Will append to each existing row another cell
+        let rows = document.querySelectorAll("tr");
+        for (let i = 0; i < rows.length; i++) {
+            let cell = document.createElement("td");
+            rows[i].appendChild(cell);
+        }
+    }
 }
 
 // Remove a row
 function removeR() {
     alert("Clicked Remove Row"); // Replace this line with your code.
+    
 }
 
 // Remove a column
