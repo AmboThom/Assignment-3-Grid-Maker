@@ -47,14 +47,21 @@ function removeR() {
 
 // Remove a column
 function removeC() {
-    // if (numCols > 0) {
-    //     let rows = document.querySelectorAll("tr");
-    //     for (let i = 0; i < rows.length; i++) {
-    //         rows[i].removeChild(rows[i].lastElementChild);
-    //     }
-    //     numCols--;
-    //     if (numCols == 0) numRows = 0;
-    // }
+    if (numCols > 0) { // If grid is empty, function will do nothing
+        let rows = document.querySelectorAll("tr");
+        if (numCols == 1) {
+            for (let i = numRows - 1; i >= 0; i--) {
+                grid.removeChild(rows[i]); // Since one element in each row, remove row
+            }
+            numCols = 0;
+            numRows = 0;
+        } else {
+            for (let i = numRows - 1; i >= 0; i--) {
+                rows[i].removeChild(rows[i].lastElementChild);
+            }
+            numCols--;
+        }
+    }
 }
 
 // Set global variable for selected color
