@@ -36,13 +36,25 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
-    
+    if (numRows > 0) {
+        let rows = document.querySelectorAll("tr");
+        //Removes the last element of the row id, tr, from the DOM
+        grid.removeChild(rows[numRows - 1]); 
+        numRows--;
+        if (numRows == 0) numCols = 0;
+    }
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    // if (numCols > 0) {
+    //     let rows = document.querySelectorAll("tr");
+    //     for (let i = 0; i < rows.length; i++) {
+    //         rows[i].removeChild(rows[i].lastElementChild);
+    //     }
+    //     numCols--;
+    //     if (numCols == 0) numRows = 0;
+    // }
 }
 
 // Set global variable for selected color
