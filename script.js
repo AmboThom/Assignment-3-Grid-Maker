@@ -12,6 +12,10 @@ function addR() {
     grid.appendChild(row); 
     for (let i = 0; i < numCols; i++) { // Will make new row contain same # of cells as prev rows 
         let cell = document.createElement("td");
+        cell.onclick = () => {
+            this.style.backgroundColor = colorSelected;
+            console.log("Clicked");
+        }
         row.appendChild(cell);
     }
 }
@@ -24,11 +28,19 @@ function addC() {
         let row = document.createElement("tr");
         grid.appendChild(row);
         let cell = document.createElement("td");
+        cell.onclick = () => {
+            this.style.backgroundColor = colorSelected;
+            console.log("Clicked");
+        }
         row.appendChild(cell);
     } else { // Will append to each existing row another cell
         let rows = document.querySelectorAll("tr");
         for (let i = 0; i < rows.length; i++) {
             let cell = document.createElement("td");
+            cell.onclick = () => {
+                this.style.backgroundColor = colorSelected;
+                console.log("Clicked");
+            }
             rows[i].appendChild(cell);
         }
     }
@@ -68,19 +80,47 @@ function removeC() {
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
     console.log(colorSelected);
+    fillSelect();
 }
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    // Extracts all cells and changes background color to selected color
+    let cells = document.querySelectorAll("td");
+    for (let i = 0; i < cells.length; i++) {
+        if (cells[i].style.backgroundColor == '') {
+            cells[i].style.backgroundColor = colorSelected;
+        }
+    }
 }
 
 // Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
-}
+// function fillAll(){
+//     alert("Clicked Fill All"); // Replace this line with your code.
+//     for (let i = 0; i < numCols; i++) {
+//         for (let j = 0; j < numCols; j++) {
+//             row[i][j].colorSelected = colorSelected.value;
+//         }
+//     }
+// }
 
 // Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+// function clearAll(){
+//     alert("Clicked Clear All"); // Replace this line with your code.
+//     for (let i = 0; i < numCols; i++) {
+//         for (let j = 0; j < numCols; j++) {
+//             row[i][j].colorSelected = 'white';
+//         }
+//     }
+// }
+
+//Fill a cell with the selected color when clicked
+const fillSelect = () => {
+    let cells = document.querySelectorAll("td");
+    cells.forEach((cell) => {
+        cell.onclick = () => {
+        cell.style.backgroundColor = colorSelected;
+        }   
+    })
+    console.log("Clicked");
 }
