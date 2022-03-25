@@ -14,4 +14,4 @@ Our website contains buttons to create, manipulate, and delete features of a gri
 
 ### Link
 
-This assignment was built using Github Pages!
+This [assignment](https://ambothom.github.io/Assignment-3-Grid-Maker/) was built using Github Pages!
